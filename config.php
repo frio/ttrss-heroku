@@ -148,7 +148,7 @@
 	// Default lifetime of a session (e.g. login) cookie. In seconds, 
 	// 0 means cookie will be deleted when browser closes.
 
-	define('SESSION_CHECK_ADDRESS', 1);
+	define('SESSION_CHECK_ADDRESS', 0);
 	// Check client IP address when validating session:
 	// 0 - disable checking
 	// 1 - check first 3 octets of an address (recommended)
