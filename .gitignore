@@ -3,9 +3,6 @@
 *.DS_Store
 #*
 .idea/*
-feed-icons/*
-cache/*/*
-lock/*
 tags
 plugins/fever
 cache/htmlpurifier/*/*ser
