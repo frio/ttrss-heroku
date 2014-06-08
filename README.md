@@ -1,7 +1,9 @@
 # Tiny Tiny RSS for Heroku
-This is a default distribution of [Tiny Tiny RSS](1) which can be run directly on Heroku.  It currently tracks version 1.12.
+This is a default distribution of [Tiny Tiny RSS][1] which can be run directly on Heroku (or dokku!).  It currently tracks version 1.12, and is inspired by the [Project Delphai][2] script.
 
 [1]: http://tt-rss.org
+[2]: https://github.com/projectdelphai/ttrss-on-heroku/
+
 
 ## Installation
 To get up and running, you'll need to create a database, populate it, and install the TT-RSS schema.  Assuming you have the heroku toolbelt and git:
@@ -25,12 +27,11 @@ And, finally, push it live, scale it up and visit!
     heroku ps:scale updater=1
     heroku open
 
-## Also!
-I've been using this on dokku too.  Handy!
 
 ## TODO
 * Verify the updater runs properly
 * Rebase on TT-RSS' git repository
+
 
 ## License of TT-RSS
 This program is free software: you can redistribute it and/or modify
