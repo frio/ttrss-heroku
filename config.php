@@ -9,7 +9,7 @@
 	define('DB_TYPE', "pgsql"); // or mysql
 	define('DB_HOST', $database_url['host']);
 	define('DB_USER', $database_url['user']);
-	define('DB_NAME', $database_url['path']);
+	define('DB_NAME', str_replace("/", "", $database_url['path']));
 	define('DB_PASS', $database_url['pass']);
 	define('DB_PORT', $database_url['port']); // usually 5432 for PostgreSQL, 3306 for MySQL
 
