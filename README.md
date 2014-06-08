@@ -1,11 +1,34 @@
-Tiny Tiny RSS
-=============
+# Tiny Tiny RSS for Heroku
+This is a default distribution of [Tiny Tiny RSS](1) which can be run directly on Heroku.  It currently tracks version 1.12.
 
-Web-based news feed aggregator, designed to allow you to read news from 
-any location, while feeling as close to a real desktop application as possible.
+[1]: http://tt-rss.org
 
-http://tt-rss.org (http://mirror.tt-rss.org)
+## Installation
+To get up and running, you'll need to create a database, populate it, and install the TT-RSS schema.  Assuming you have the heroku toolbelt and git:
 
+    git clone http://github.com/frio/ttrss-heroku
+    cd ttrss-heroku
+    heroku create
+    heroku addons:add heroku-postgresql:dev
+    cat schema/ttrss_schema_pgsql.sql | heroku pg:psql `heroku pg:info | sed 's/=== HEROKU_POSTGRESQL_//' | sed 's/_URL (DATABASE_URL)//' | sed 's/_URL//' | head -n 1`
+
+The application should be almost ready to go at this point.  We'll configure it first.
+
+    heroku config:set SECRET_KEY=`openssl rand -base64 24` # or another random key
+    heroku config:set DATABASE_URL=$your_postgres_url # you can get this using heroku config:get
+    heroku config:set APP_URL="http://my-amazing-app.herokuapp.com"
+
+And, finally, push it live, scale it up and visit!
+
+    git push heroku master
+    heroku ps:scale web=1
+    heroku ps:scale updater=1
+    heroku open
+
+## Also!
+I've been using this on dokku too.  Handy!
+
+## License
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -23,19 +46,3 @@ Copyright (c) 2005 Andrew Dolgov (unless explicitly stated otherwise).
 
 Uses Silk icons by Mark James: http://www.famfamfam.com/lab/icons/silk/
 
-## Requirements
-
-* Compatible web browser (http://tt-rss.org/wiki/CompatibleBrowsers)
-* Web server, for example Apache
-* PHP (with support for mbstring functions)
-* PostgreSQL (tested on 8.3) or MySQL (InnoDB and version 4.1+ required)
-		
-## Installation Notes
-
-http://tt-rss.org/wiki/InstallationNotes
-
-## See also
-
-* FAQ: http://tt-rss.org/wiki/FrequentlyAskedQuestions
-* Forum: http://tt-rss.org/forum
-* Wiki: http://tt-rss.org/wiki/WikiStart
