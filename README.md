@@ -29,9 +29,8 @@ And, finally, push it live, scale it up and visit!
 I've been using this on dokku too.  Handy!
 
 ## TODO
-
-[ ] Verify the updater runs properly
-[ ] Rebase on TT-RSS' git repository
+* Verify the updater runs properly
+* Rebase on TT-RSS' git repository
 
 ## License of TT-RSS
 This program is free software: you can redistribute it and/or modify
