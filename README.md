@@ -28,7 +28,12 @@ And, finally, push it live, scale it up and visit!
 ## Also!
 I've been using this on dokku too.  Handy!
 
-## License
+## TODO
+
+[ ] Verify the updater runs properly
+[ ] Rebase on TT-RSS' git repository
+
+## License of TT-RSS
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
