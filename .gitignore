@@ -3,7 +3,6 @@
 *.DS_Store
 #*
 .idea/*
-config.php
 feed-icons/*
 cache/*/*
 lock/*
@@ -12,3 +11,5 @@ plugins/fever
 cache/htmlpurifier/*/*ser
 lib/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/*/*ser
 web.config
+.env
+

@@ -3,12 +3,15 @@
 	// *** Database configuration (important!) ***
 	// *******************************************
 
+	// Assume Postgres, because why use anything else on heroku?
+	$database_url = parse_url($_ENV['DATABASE_URL']);
+
 	define('DB_TYPE', "pgsql"); // or mysql
-	define('DB_HOST', "localhost");
-	define('DB_USER', "fox");
-	define('DB_NAME', "fox");
-	define('DB_PASS', "XXXXXX");
-	define('DB_PORT', ''); // usually 5432 for PostgreSQL, 3306 for MySQL
+	define('DB_HOST', $database_url['host']);
+	define('DB_USER', $database_url['user']);
+	define('DB_NAME', $database_url['path']);
+	define('DB_PASS', $database_url['pass']);
+	define('DB_PORT', $database_url['port']); // usually 5432 for PostgreSQL, 3306 for MySQL
 
 	define('MYSQL_CHARSET', 'UTF8');
 	// Connection charset for MySQL. If you have a legacy database and/or experience
@@ -18,13 +21,13 @@
 	// *** Basic settings (important!) ***
 	// ***********************************
 
-	define('SELF_URL_PATH', 'http://example.org/tt-rss/');
+	define('SELF_URL_PATH', $_ENV['URL_PATH']);
 	// Full URL of your tt-rss installation. This should be set to the
 	// location of tt-rss directory, e.g. http://example.org/tt-rss/
 	// You need to set this option correctly otherwise several features
 	// including PUSH, bookmarklets and browser integration will not work properly.
 
-	define('FEED_CRYPT_KEY', '');
+	define('FEED_CRYPT_KEY', $_ENV['SECRET_KEY']);
 	// Key used for encryption of passwords for password-protected feeds
 	// in the database. A string of 24 random characters. If left blank, encryption
 	// is not used. Requires mcrypt functions.
@@ -206,7 +209,7 @@
 	// Disabling auth_internal in this list would automatically disable
 	// reset password link on the login form.
 	
-	define('LOG_DESTINATION', 'sql');
+	define('LOG_DESTINATION', '');
 	// Log destination to use. Possible values: sql (uses internal logging
 	// you can read in Preferences -> System), syslog - logs to system log.
 	// Setting this to blank uses PHP logging (usually to http server 
